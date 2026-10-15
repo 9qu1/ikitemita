@@ -1,7 +1,7 @@
 // イヌ（飼いイヌと、村や町で自由にくらすイヌ）
 //   世界のイヌは 7億〜9億頭。そのうち約4分の3が、家の外で自由にくらすイヌ（free-ranging dog）
 //   ここでは 飼いイヌ 3割・村や町のイヌ 7割にした（ほんとうの割合に近い）
-import { H, D, W, M, Y } from '../units.js?v=1.0.0';
+import { H, D, W, M, Y } from '../units.js?v=1.0.1';
 
 export default {
   id: 'dog',

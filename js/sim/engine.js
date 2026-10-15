@@ -1,8 +1,8 @@
 // 一生をつくる心臓部。種（seed）とうまれさきの設定から、決まった一生を1つ返す
 //   どの種類（ひと・どうぶつ・むし）も同じ形のデータ（species/*.js）で動く。書き方は CONTENT.md
-import { makeRng } from '../rng.js?v=1.0.0';
-import { SPECIES, SPECIES_BY_ID } from './species/index.js?v=1.0.0';
-import { spanText } from './format.js?v=1.0.0';
+import { makeRng } from '../rng.js?v=1.0.1';
+import { SPECIES, SPECIES_BY_ID } from './species/index.js?v=1.0.1';
+import { spanText } from './format.js?v=1.0.1';
 
 // データを変えて同じ種でも一生が変わるときは上げる（共有の URL に入る）
 export const DATA_VERSION = 1;

@@ -4,7 +4,7 @@
 //   動いている 時間の 寿命は 数か月（Milnesium tardigradum で 約83日・Hengherr ほか 2008）。
 //   このおもちゃでは 乾眠の あいだも 年齢（カレンダーの 時間）は 進むので、何度も 乾眠を はさんだ 個体は 何年も 生きる。
 //   多くの コケの クマムシは メスだけで たまごを うむ（単為生殖）ので、性別は つけていない
-import { H, D, W, M, Y } from '../units.js?v=1.0.0';
+import { H, D, W, M, Y } from '../units.js?v=1.0.1';
 
 export default {
   id: 'tardigrade',

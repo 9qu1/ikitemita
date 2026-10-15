@@ -10,7 +10,7 @@
 //   「A か B」は need で書けないので、反対のタグを並べて書く（例: L か LM → ['!inc-UM', '!inc-H']）
 //
 // ■ 文の中で使える {name} {country} {city} {food} {sport} {fest} {sweet} {animal} {job}（job は worker のときだけ）
-import { D, W, M, Y } from '../units.js?v=1.0.0';
+import { D, W, M, Y } from '../units.js?v=1.0.1';
 
 const NOT_RICH = ['!inc-UM', '!inc-H']; // 所得が 低い か やや低い
 const RICH = ['!inc-L', '!inc-LM']; // 所得が やや高い か 高い

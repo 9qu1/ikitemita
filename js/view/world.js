@@ -1,9 +1,9 @@
 // 1つの一生を、1つの窓（箱庭＋生きもの＋ふきだし）として描く
-import { stageAt, habitatAt, spriteAt } from '../sim/engine.js?v=1.0.0';
-import { clockText } from '../sim/format.js?v=1.0.0';
-import { IMG, scaledCanvas } from './assets.js?v=1.0.0';
-import { areaFor } from './habitats.js?v=1.0.0';
-import { makeRng } from '../rng.js?v=1.0.0';
+import { stageAt, habitatAt, spriteAt } from '../sim/engine.js?v=1.0.1';
+import { clockText } from '../sim/format.js?v=1.0.1';
+import { IMG, scaledCanvas } from './assets.js?v=1.0.1';
+import { areaFor } from './habitats.js?v=1.0.1';
+import { makeRng } from '../rng.js?v=1.0.1';
 
 // ×1 のとき、物差しの長さ（refDays）を生きると何ミリ秒かかるか
 export const BASE_MS = 120000;
@@ -166,7 +166,9 @@ export class LifeView {
       g.scale(this.face, 1);
       g.drawImage(c, -ax * w, -ay * hgt, w, hgt);
       g.restore();
-      if (life.tags?.includes('queen') && hgt > 10) drawCrown(g, px, py - bob - hgt * 0.95, hgt * 0.32);
+      // 女王アリ・女王バチは、おとなのすがたのときに小さな王冠
+      const queen = (life.variant.id === 'queen' || life.tags?.includes('queen')) && (spr.id === 'ant' || spr.id === 'bee');
+      if (queen && hgt > 10) drawCrown(g, px, py - bob - hgt * 0.95, Math.max(6, hgt * 0.32));
     } else {
       g.fillStyle = '#FFB35D';
       g.beginPath(); g.arc(px, py - hgt * 0.4 - bob, hgt * 0.35, 0, Math.PI * 2); g.fill();

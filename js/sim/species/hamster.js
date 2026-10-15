@@ -1,6 +1,6 @@
 // ハムスター（ペットの ゴールデンハムスター）
 //   ペットのゴールデンハムスターの多くは、1930年にシリアのアレッポ近くで見つかった母子の子孫
-import { H, D, W, M, Y } from '../units.js?v=1.0.0';
+import { H, D, W, M, Y } from '../units.js?v=1.0.1';
 
 export default {
   id: 'hamster',
