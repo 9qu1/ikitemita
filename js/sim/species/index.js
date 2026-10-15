@@ -1,0 +1,36 @@
+// 種類の一覧（ここに足すと、おまかせやフィルターに出るようになる）
+import human from './human.js?v=1.0.0';
+import cat from './cat.js?v=1.0.0';
+import dog from './dog.js?v=1.0.0';
+import hamster from './hamster.js?v=1.0.0';
+import sparrow from './sparrow.js?v=1.0.0';
+import tanuki from './tanuki.js?v=1.0.0';
+import owl from './owl.js?v=1.0.0';
+import lion from './lion.js?v=1.0.0';
+import elephant from './elephant.js?v=1.0.0';
+import sloth from './sloth.js?v=1.0.0';
+import seaotter from './seaotter.js?v=1.0.0';
+import penguin from './penguin.js?v=1.0.0';
+import seaturtle from './seaturtle.js?v=1.0.0';
+import whale from './whale.js?v=1.0.0';
+import salmon from './salmon.js?v=1.0.0';
+import clownfish from './clownfish.js?v=1.0.0';
+import sunfish from './sunfish.js?v=1.0.0';
+import octopus from './octopus.js?v=1.0.0';
+import frog from './frog.js?v=1.0.0';
+import jellyfish from './jellyfish.js?v=1.0.0';
+import ant from './ant.js?v=1.0.0';
+import bee from './bee.js?v=1.0.0';
+import beetle from './beetle.js?v=1.0.0';
+import cicada from './cicada.js?v=1.0.0';
+import butterfly from './butterfly.js?v=1.0.0';
+import firefly from './firefly.js?v=1.0.0';
+import ladybug from './ladybug.js?v=1.0.0';
+import dragonfly from './dragonfly.js?v=1.0.0';
+import mayfly from './mayfly.js?v=1.0.0';
+import pillbug from './pillbug.js?v=1.0.0';
+import mantis from './mantis.js?v=1.0.0';
+import tardigrade from './tardigrade.js?v=1.0.0';
+
+export const SPECIES = [human, cat, dog, hamster, sparrow, tanuki, owl, lion, elephant, sloth, seaotter, penguin, seaturtle, whale, salmon, clownfish, sunfish, octopus, frog, jellyfish, ant, bee, beetle, cicada, butterfly, firefly, ladybug, dragonfly, mayfly, pillbug, mantis, tardigrade];
+export const SPECIES_BY_ID = Object.fromEntries(SPECIES.map((s) => [s.id, s]));
