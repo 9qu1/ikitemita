@@ -1,7 +1,7 @@
 // ミツバチ（セイヨウミツバチ Apis mellifera）: 夏うまれの働きバチ・冬をこす働きバチ・オスバチ・女王バチ
 //   すがたの切りかわる時期と名前が variant ごとにちがうので、variant に stages を持たせて plan で life.stages を差しかえる
 //   （engine はいま種ごとの stages しか持たないため）。オスバチの「結婚して すぐ死ぬ」も plan で死ぬ直前に置く
-import { H, D, W, M, Y } from '../units.js?v=1.0.2';
+import { H, D, W, M, Y } from '../units.js?v=1.0.3';
 
 // 働きバチ 21日・女王 16日・オス 24日で おとなに（たまご 3日 → 幼虫 → ふたをされて さなぎ）
 const WORKER_STAGES = [

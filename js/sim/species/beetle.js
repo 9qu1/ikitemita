@@ -1,7 +1,7 @@
 // カブトムシ（Trypoxylus dichotomus）: 野生／子どもに飼われる（家の飼育ケースで うまれる）
 //   7〜8月に たまご → 10日ほどで かえる → 腐葉土の中の 幼虫で 冬をこす → 6月はじめに さなぎ（約1か月）
 //   → 6月下旬〜7月中旬に 羽化（7日ほどで 地上へ）→ 成虫は ひと夏（山梨県森林総合研究所）
-import { H, D, W, M, Y } from '../units.js?v=1.0.2';
+import { H, D, W, M, Y } from '../units.js?v=1.0.3';
 
 export default {
   id: 'beetle',

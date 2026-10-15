@@ -1,7 +1,7 @@
 // クロオオアリ（Camponotus japonicus）: 働きアリ・新しい女王アリ・オスアリ
 //   すがたの切りかわる時期と名前が variant ごとにちがうので、variant に stages を持たせて plan で life.stages を差しかえる
 //   （engine はいま種ごとの stages しか持たないため。variant.stages を engine が読むようになれば plan はいらない）
-import { H, D, W, M, Y } from '../units.js?v=1.0.2';
+import { H, D, W, M, Y } from '../units.js?v=1.0.3';
 
 // 働きアリ: たまごから おとなまで 6〜10週間（formicamarket）。さなぎは まゆを つくる
 const WORKER_STAGES = [

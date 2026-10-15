@@ -2,7 +2,7 @@
 //   ミカンや サンショウの 葉に たまご（約1週間）→ 幼虫（4回 だっぴして 5れい。1〜4れいは 鳥のふんに にる）
 //   → さなぎ（夏は 10日〜2週間。秋の さなぎは そのまま 冬をこす）→ チョウ（2週間〜1か月）。年に 2〜5回 発生する
 //   世代で すがたの切りかわる時期が ちがうので、variant に stages を持たせて plan で life.stages を差しかえる
-import { H, D, W, M, Y } from '../units.js?v=1.0.2';
+import { H, D, W, M, Y } from '../units.js?v=1.0.3';
 
 const SUMMER = { hatch: 5 * D, green: 17 * D, pupa: 25 * D, adult: 36 * D };
 const AUTUMN = { hatch: 7 * D, green: 22 * D, pupa: 32 * D, adult: 219 * D }; // 9月の たまご → 10月に さなぎ → 4月に 羽化

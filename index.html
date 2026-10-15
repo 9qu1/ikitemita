@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&family=Zen+Maru+Gothic:wght@500;700&display=swap">
-<link rel="stylesheet" href="style.css?v=1.0.2">
+<link rel="stylesheet" href="style.css?v=1.0.3">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T31EDBJBY"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1T31EDBJBY');</script>
 </head>
@@ -46,6 +46,11 @@
     </div>
 
     <div class="panels">
+      <section class="counter" id="counter" hidden aria-live="polite">
+        <p class="cnt-label"><img src="img/icons/birth.webp" alt="" width="20" height="20">みんなで うまれた いのち</p>
+        <p class="cnt-num"><b id="cntLives">0</b><span>こ</span></p>
+        <p class="cnt-sub" id="cntSub"></p>
+      </section>
       <section class="panel">
         <h2><img src="img/icons/sun.webp" alt="" width="22" height="22">スピード<small>（人生の進み方）</small></h2>
         <div class="chips row" id="speedChips"></div>
@@ -119,6 +124,7 @@
         <button type="button" class="link-btn" id="replayBtn">もう一度 ながめる</button>
         <button type="button" class="link-btn" id="homeBtn">ホームへ</button>
       </div>
+      <p class="res-serial" id="resSerial" hidden></p>
       <div class="res-stats" id="resStats" hidden></div>
       <p class="res-fact" id="resFact" hidden></p>
       <section class="panel res-detail">
@@ -152,6 +158,6 @@
 
   <div id="toast" class="toast" hidden role="status"></div>
 </main>
-<script type="module" src="js/app.js?v=1.0.2"></script>
+<script type="module" src="js/app.js?v=1.0.3"></script>
 </body>
 </html>

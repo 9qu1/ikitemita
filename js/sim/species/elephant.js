@@ -1,7 +1,7 @@
 // アフリカゾウ（サバンナのゾウ）
 //   メスは家族の群れで一生をすごし、オスは12〜15歳で家族をはなれる。寿命の曲線もちがうので、
 //   sexes ではなく variant でオス・メスを分け、タグ 'm' / 'f' をつける
-import { H, D, W, M, Y } from '../units.js?v=1.0.2';
+import { H, D, W, M, Y } from '../units.js?v=1.0.3';
 
 const PLACES = [
   { text: 'ケニアの アンボセリ', lat: -2.65, lon: 37.26 },

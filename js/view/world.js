@@ -1,9 +1,9 @@
 // 1つの一生を、1つの窓（箱庭＋生きもの＋ふきだし）として描く
-import { stageAt, habitatAt, spriteAt } from '../sim/engine.js?v=1.0.2';
-import { clockText } from '../sim/format.js?v=1.0.2';
-import { IMG, scaledCanvas } from './assets.js?v=1.0.2';
-import { areaFor } from './habitats.js?v=1.0.2';
-import { makeRng } from '../rng.js?v=1.0.2';
+import { stageAt, habitatAt, spriteAt } from '../sim/engine.js?v=1.0.3';
+import { clockText } from '../sim/format.js?v=1.0.3';
+import { IMG, scaledCanvas } from './assets.js?v=1.0.3';
+import { areaFor } from './habitats.js?v=1.0.3';
+import { makeRng } from '../rng.js?v=1.0.3';
 
 // ×1 のとき、物差しの長さ（refDays）を生きると何ミリ秒かかるか
 export const BASE_MS = 120000;

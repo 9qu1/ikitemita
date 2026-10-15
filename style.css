@@ -94,6 +94,16 @@ img { max-width: 100%; }
 .panel h2 .total { margin-left: auto; font-size: 13px; color: var(--sel); }
 .note { margin: 8px 2px 0; font-size: 13px; color: var(--ink-sub); line-height: 1.5; }
 
+/* みんなの数 */
+.counter { text-align: center; background: linear-gradient(180deg, #FFFDF7, #FFF4E6); border: 1px solid #F1D9BF; border-radius: 20px; padding: 10px 16px 12px; box-shadow: 0 4px 12px rgba(101, 82, 60, .05); }
+.cnt-label { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 0; font-family: var(--f-title); font-weight: 800; font-size: 14px; color: #88786C; }
+.cnt-num { margin: 0; line-height: 1.15; font-family: var(--f-title); }
+.cnt-num b { font-size: clamp(34px, 10vw, 46px); font-weight: 800; color: var(--coral); font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+.cnt-num span { font-size: 18px; font-weight: 800; color: #756257; margin-left: 2px; }
+.cnt-sub { margin: 2px 0 0; font-size: 13px; font-weight: 700; color: #88786C; font-variant-numeric: tabular-nums; }
+.res-serial { margin: 0; text-align: center; font-size: 14px; font-weight: 700; color: var(--ink-sub); }
+.res-serial b { font-family: var(--f-title); font-size: 18px; color: var(--coral); }
+
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
   min-height: 44px; min-width: 52px; padding: 0 14px; border: 0; border-radius: 16px; background: var(--chip);
@@ -103,7 +113,7 @@ img { max-width: 100%; }
 .chip:active { transform: translateY(1px); }
 .chip[aria-pressed="true"] { background: var(--sel); color: #fff; font-weight: 800; box-shadow: 0 2px 0 var(--sel-sh), inset 0 1px 0 rgba(255, 255, 255, .4); }
 .chip.chip-coral[aria-pressed="true"] { background: var(--coral); box-shadow: 0 2px 0 var(--coral-sh), inset 0 1px 0 rgba(255, 255, 255, .4); }
-.chips.row .chip { flex: 1 1 0; min-width: 0; padding: 0 2px; }
+.chips.row .chip { flex: 1 1 0; min-width: 0; padding: 0 2px; font-size: 15px; letter-spacing: -.01em; }
 .chips.mini { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
 .chips.mini .chip { min-height: 40px; min-width: 0; padding: 0; font-size: 15px; border-radius: 13px; background: #ECEAE7; color: #57473D; box-shadow: none; }
 .chips.mini .chip[aria-pressed="true"] { background: #249FDC; color: #fff; box-shadow: none; }
@@ -250,7 +260,7 @@ body[data-count="1"] .run-stage { border-radius: 24px; overflow: hidden; box-sha
   .sky-wrap { background: url(img/sky-wide.webp) center 30% / cover no-repeat; }
   .sky { width: min(560px, 90vw); height: min(560px, 66vh); -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); }
   .panels { max-width: 900px; grid-template-columns: 1fr 1fr; margin-top: 8px; }
-  .panels > :nth-child(3), .panels > .history, .panels > #prHome, .panels > .foot { grid-column: 1 / -1; }
+  .panels > .counter, .panels > :nth-child(4), .panels > .history, .panels > #prHome, .panels > .foot { grid-column: 1 / -1; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -3,7 +3,7 @@
 //   たまごのまま冬をこし、春に 田んぼへ 水が入ると かえる（4月ごろ）→ ヤゴで 約2か月 → 6月に 羽化
 //   → 暑さに弱く（30℃をこえると 生きにくい）夏は 標高の高い 山へ → 9月下旬に 赤くなって 田んぼへ もどり、
 //   つながって たまごを うむ → 11月〜12月はじめに 一生を終える（Nakanishi ほか 2018・ja.wikipedia の写し）
-import { H, D, W, M, Y } from '../units.js?v=1.0.2';
+import { H, D, W, M, Y } from '../units.js?v=1.0.3';
 
 export default {
   id: 'dragonfly',

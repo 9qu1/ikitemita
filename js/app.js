@@ -1,17 +1,17 @@
 // イキテミタ: 画面の流れ（ホーム → スマホに吸いこまれる → 地球儀 → 窓がひらく → 一生 → まとめ）
-import { VERSION, SPEEDS, COUNTS, SITE_URL } from './config.js?v=1.0.2';
-import { makeLife, FILTERS, DATA_VERSION, KINDS } from './sim/engine.js?v=1.0.2';
-import { spanText, ageText } from './sim/format.js?v=1.0.2';
-import { newSeed } from './rng.js?v=1.0.2';
-import { load, set, addHistory, save } from './store.js?v=1.0.2';
-import { sfx } from './sound.js?v=1.0.2';
-import { prCard } from './promo.js?v=1.0.2';
-import { Globe, preloadGlobe, easeInOut } from './view/globe.js?v=1.0.2';
-import { Runner } from './view/runner.js?v=1.0.2';
-import { LifeView } from './view/world.js?v=1.0.2';
-import { loadForLives, loadIcons, loadImg, IMG, loadMeta } from './view/assets.js?v=1.0.2';
-import { ICONS } from './sim/engine.js?v=1.0.2';
-import { lifeCard, summaryCard, canvasBlob, asName, rarityText } from './view/card.js?v=1.0.2';
+import { VERSION, SPEEDS, COUNTS, SITE_URL, COUNTER_API, COUNT_ON } from './config.js?v=1.0.3';
+import { makeLife, FILTERS, DATA_VERSION, KINDS } from './sim/engine.js?v=1.0.3';
+import { spanText, ageText } from './sim/format.js?v=1.0.3';
+import { newSeed } from './rng.js?v=1.0.3';
+import { load, set, addHistory, save } from './store.js?v=1.0.3';
+import { sfx } from './sound.js?v=1.0.3';
+import { prCard } from './promo.js?v=1.0.3';
+import { Globe, preloadGlobe, easeInOut } from './view/globe.js?v=1.0.3';
+import { Runner } from './view/runner.js?v=1.0.3';
+import { LifeView } from './view/world.js?v=1.0.3';
+import { loadForLives, loadIcons, loadImg, IMG, loadMeta } from './view/assets.js?v=1.0.3';
+import { ICONS } from './sim/engine.js?v=1.0.3';
+import { lifeCard, summaryCard, canvasBlob, asName, rarityText } from './view/card.js?v=1.0.3';
 
 const $ = (s) => document.querySelector(s);
 const st = load();
@@ -72,6 +72,7 @@ function renderHome() {
   $('#filterNote').textContent = FILTER_NOTE[st.filter] || '';
   hint();
   renderHistory();
+  loadCounter();
   $('#prHome').replaceChildren(prCard('home'));
   soundLabel();
 }
@@ -106,13 +107,52 @@ function renderHistory() {
 
 const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+// ---------- みんなの数（カウンター） ----------
+let shown = null; // いま画面に出している数
+async function loadCounter() {
+  try {
+    const r = await fetch(`${COUNTER_API}/api/stats`);
+    if (!r.ok) throw new Error(r.status);
+    showCounter(await r.json());
+  } catch { $('#counter').hidden = true; }
+}
+function showCounter(s) {
+  if (!s || typeof s.lives !== 'number') return;
+  const box = $('#counter');
+  box.hidden = false;
+  const fmt = (x) => Math.round(x).toLocaleString('ja-JP');
+  $('#cntSub').textContent = `${fmt(s.people)}人が ${fmt(s.presses)}回 押した・きょう ${fmt(s.today?.presses || 0)}回`;
+  const from = shown ?? Math.max(0, s.lives - Math.min(s.lives, 300));
+  const to = s.lives;
+  shown = to;
+  const el = $('#cntLives');
+  if (reduce || from === to) { el.textContent = fmt(to); return; }
+  const t0 = performance.now();
+  const step = (now) => {
+    const k = Math.min(1, (now - t0) / 900);
+    el.textContent = fmt(from + (to - from) * (1 - Math.pow(1 - k, 3)));
+    if (k < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+// 「うまれる」を数える（本番だけ）。戻り値は通し番号つきの答え（失敗したら null）
+function countBirth(n, f) {
+  if (!COUNT_ON) return null;
+  const first = !st.counted;
+  set('counted', true);
+  return fetch(`${COUNTER_API}/api/born`, { method: 'POST', headers: { 'content-type': 'text/plain' }, body: JSON.stringify({ n, f, first }), keepalive: true })
+    .then((r) => (r.ok ? r.json() : null))
+    .then((j) => { if (j?.ok) showCounter(j); return j?.ok ? j : null; })
+    .catch(() => null);
+}
+
 // ---------- うまれる ----------
 async function birth() {
   sfx.unlock();
   const n = st.count;
   const seed = new URLSearchParams(location.search).get('seed') || newSeed(); // ?seed= は確かめ用（同じ一生で撮る）
   const lives = makeLives(seed, n, st.filter);
-  session = { seed, n, filter: st.filter, lives };
+  session = { seed, n, filter: st.filter, lives, serial: countBirth(n, st.filter) };
   const ready = loadForLives(lives);
   try { window.gtag?.('event', 'umareru', { n, f: st.filter }); } catch {}
   $('#birthBtn').disabled = true;
@@ -399,6 +439,16 @@ async function showResult(s) {
     }
   }
   $('#prResult').replaceChildren(prCard('result'));
+  // イキテミタで うまれた 何番目の いのちか（数えたときだけ）
+  $('#resSerial').hidden = true;
+  if (s.serial && !s.replay) {
+    Promise.resolve(s.serial).then((j) => {
+      if (!j || session !== s) return;
+      const f = (x) => x.toLocaleString('ja-JP');
+      $('#resSerial').innerHTML = j.from === j.to ? `イキテミタで うまれた <b>${f(j.to)}</b>番目の いのち` : `イキテミタで うまれた <b>${f(j.from)}</b>〜<b>${f(j.to)}</b>番目の いのち`;
+      $('#resSerial').hidden = false;
+    });
+  }
   // 共有のリンク
   const url = shareUrl(s);
   const text = single ? `${asName(l)}として ${spanText(l.span)} いきてみた。` : `${s.n}回 いきてみた。`;
@@ -502,7 +552,7 @@ function bind() {
     setTimeout(() => birth(), 150);
   });
   $('#homeBtn').addEventListener('click', () => { show('home'); renderHome(); if (history.replaceState) history.replaceState(null, '', location.pathname); });
-  $('#replayBtn').addEventListener('click', () => { if (!session) return; const s = { ...session, replay: true, lives: makeLives(session.seed, session.n, session.filter) }; session = s; startRun(s.lives); });
+  $('#replayBtn').addEventListener('click', () => { if (!session) return; const s = { ...session, replay: true, serial: null, lives: makeLives(session.seed, session.n, session.filter) }; session = s; startRun(s.lives); });
   $('#copyBtn').addEventListener('click', async () => {
     if (!session) return;
     try { await navigator.clipboard.writeText(shareUrl(session)); toast('リンクをコピーしました'); } catch { toast('コピーできませんでした'); }

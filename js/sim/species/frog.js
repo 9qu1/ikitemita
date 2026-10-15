@@ -1,5 +1,5 @@
 // アマガエル（ニホンアマガエル）（書き方は CONTENT.md）
-import { H, D, W, M, Y } from '../units.js?v=1.0.2';
+import { H, D, W, M, Y } from '../units.js?v=1.0.3';
 
 export default {
   id: 'frog',
