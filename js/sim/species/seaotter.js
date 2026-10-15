@@ -1,5 +1,5 @@
 // ラッコ: 海に浮かんでくらす。おなかの上で貝を石で割る・海そうを巻いて眠る・子はお母さんのおなかの上で育つ
-import { H, D, W, M, Y } from '../units.js?v=1.0.1';
+import { H, D, W, M, Y } from '../units.js?v=1.0.2';
 
 export default {
   id: 'seaotter',

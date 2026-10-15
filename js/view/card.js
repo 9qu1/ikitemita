@@ -1,10 +1,10 @@
 // まとめの画像（1080×1350）をつくる: 1つの一生のカード／たくさんの一生のまとめ
-import { IMG, loadForLives, loadIcons, loadImg } from './assets.js?v=1.0.1';
-import { areaFor } from './habitats.js?v=1.0.1';
-import { moveOfSprite } from './world.js?v=1.0.1';
-import { spriteAt, habitatAt, stageAt } from '../sim/engine.js?v=1.0.1';
-import { ageText, spanText, oneIn, num } from '../sim/format.js?v=1.0.1';
-import { roundRect, wrap, drawStar } from './world.js?v=1.0.1';
+import { IMG, loadForLives, loadIcons, loadImg } from './assets.js?v=1.0.2';
+import { areaFor } from './habitats.js?v=1.0.2';
+import { moveOfSprite } from './world.js?v=1.0.2';
+import { spriteAt, habitatAt, stageAt } from '../sim/engine.js?v=1.0.2';
+import { ageText, spanText, oneIn, num } from '../sim/format.js?v=1.0.2';
+import { roundRect, wrap, drawStar } from './world.js?v=1.0.2';
 
 const W = 1080, H = 1350;
 const C = { paper: '#FFF9ED', card: '#FFFCF5', inset: '#F8EEE2', ink: '#49382F', sub: '#756257', muted: '#95897F', coral: '#FF8179', blue: '#269FE8', gold: '#FFD16B', border: '#EEDCC5', good: '#FFE3DC', hard: '#DFEDF7' };

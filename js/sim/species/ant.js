@@ -1,7 +1,7 @@
 // クロオオアリ（Camponotus japonicus）: 働きアリ・新しい女王アリ・オスアリ
 //   すがたの切りかわる時期と名前が variant ごとにちがうので、variant に stages を持たせて plan で life.stages を差しかえる
 //   （engine はいま種ごとの stages しか持たないため。variant.stages を engine が読むようになれば plan はいらない）
-import { H, D, W, M, Y } from '../units.js?v=1.0.1';
+import { H, D, W, M, Y } from '../units.js?v=1.0.2';
 
 // 働きアリ: たまごから おとなまで 6〜10週間（formicamarket）。さなぎは まゆを つくる
 const WORKER_STAGES = [
@@ -113,7 +113,8 @@ export default {
     { at: [72 * D, 4 * M], need: 'v-queen', text: '羽が あっても、春まで 巣の中で 待った', icon: 'sleep' },
     { at: [72 * D, 4 * M], need: 'v-queen', p: 0.6, text: '働きアリたちに、たっぷり ごはんを もらった', icon: 'apple', mood: 'good' },
     { at: [10 * M, 10.3 * M], need: 'v-queen', text: '雨上がりの 夕方、空へ 飛びたった', icon: 'plane', mood: 'good', big: 3, set: 'flew', move: 'garden' },
-    { at: [10 * M, 10.4 * M], need: ['v-queen', 'flew'], p: 0.9, text: '空の上で、よその 巣の オスと 結婚した', icon: 'heart', mood: 'good', big: 2, set: 'q-mated' },
+    // 結婚は必ず（長く生きる女王＝巣作りに成功した女王。失敗する女王は、生き残りの曲線どおり飛んだ直後に終わる。10/15 Claude）
+    { at: [10 * M, 10.4 * M], need: ['v-queen', 'flew'], text: '空の上で、よその 巣の オスと 結婚した', icon: 'heart', mood: 'good', big: 2, set: 'q-mated' },
     { at: [10 * M, 10.5 * M], need: 'q-mated', text: '地面に おりて、自分で 羽を 落とした', icon: 'feather', big: 2, set: 'dealate' },
     { at: [10 * M, 10.6 * M], need: 'dealate', text: '土に 穴を ほって、入り口を ふさいだ', icon: 'box', big: 2, set: 'founding', move: 'underground' },
     { at: [10.1 * M, 10.8 * M], need: 'founding', text: 'ひとりきりの へやで、たまごを {n}こ 産んだ', icon: 'egg', mood: 'good', big: 3, add: { eggs: [8, 15] }, set: 'mother' },

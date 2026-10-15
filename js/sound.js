@@ -1,5 +1,5 @@
 // 小さな効果音（波形から作る・外の音源は使わない）。初めは消音
-import { load } from './store.js?v=1.0.1';
+import { load } from './store.js?v=1.0.2';
 let ac = null;
 const ctx = () => { if (!ac) { try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch { ac = null; } } return ac; };
 const on = () => load().sound;

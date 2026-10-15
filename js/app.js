@@ -1,17 +1,17 @@
 // イキテミタ: 画面の流れ（ホーム → スマホに吸いこまれる → 地球儀 → 窓がひらく → 一生 → まとめ）
-import { VERSION, SPEEDS, COUNTS, SITE_URL } from './config.js?v=1.0.1';
-import { makeLife, FILTERS, DATA_VERSION, KINDS } from './sim/engine.js?v=1.0.1';
-import { spanText, ageText } from './sim/format.js?v=1.0.1';
-import { newSeed } from './rng.js?v=1.0.1';
-import { load, set, addHistory, save } from './store.js?v=1.0.1';
-import { sfx } from './sound.js?v=1.0.1';
-import { prCard } from './promo.js?v=1.0.1';
-import { Globe, preloadGlobe, easeInOut } from './view/globe.js?v=1.0.1';
-import { Runner } from './view/runner.js?v=1.0.1';
-import { LifeView } from './view/world.js?v=1.0.1';
-import { loadForLives, loadIcons, loadImg, IMG, loadMeta } from './view/assets.js?v=1.0.1';
-import { ICONS } from './sim/engine.js?v=1.0.1';
-import { lifeCard, summaryCard, canvasBlob, asName, rarityText } from './view/card.js?v=1.0.1';
+import { VERSION, SPEEDS, COUNTS, SITE_URL } from './config.js?v=1.0.2';
+import { makeLife, FILTERS, DATA_VERSION, KINDS } from './sim/engine.js?v=1.0.2';
+import { spanText, ageText } from './sim/format.js?v=1.0.2';
+import { newSeed } from './rng.js?v=1.0.2';
+import { load, set, addHistory, save } from './store.js?v=1.0.2';
+import { sfx } from './sound.js?v=1.0.2';
+import { prCard } from './promo.js?v=1.0.2';
+import { Globe, preloadGlobe, easeInOut } from './view/globe.js?v=1.0.2';
+import { Runner } from './view/runner.js?v=1.0.2';
+import { LifeView } from './view/world.js?v=1.0.2';
+import { loadForLives, loadIcons, loadImg, IMG, loadMeta } from './view/assets.js?v=1.0.2';
+import { ICONS } from './sim/engine.js?v=1.0.2';
+import { lifeCard, summaryCard, canvasBlob, asName, rarityText } from './view/card.js?v=1.0.2';
 
 const $ = (s) => document.querySelector(s);
 const st = load();

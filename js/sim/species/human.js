@@ -1,8 +1,8 @@
 // ひと: 世界のどこかの国にうまれる。国の統計（出生数・寿命・乳児死亡・都市の割合・出生率など）から一生を組み立てる
 //   国のデータは ../data/countries.js、できごとの文は ./human-events.js
-import { M, Y } from '../units.js?v=1.0.1';
-import { COUNTRIES, REGIONS } from '../data/countries.js?v=1.0.1';
-import HE from './human-events.js?v=1.0.1';
+import { M, Y } from '../units.js?v=1.0.2';
+import { COUNTRIES, REGIONS } from '../data/countries.js?v=1.0.2';
+import HE from './human-events.js?v=1.0.2';
 
 // 事故などの「年齢によらない」死亡のしやすさ（所得の段階ごと）と、年をとるごとの増え方
 const BG = { L: 0.0035, LM: 0.002, UM: 0.0012, H: 0.0004 };

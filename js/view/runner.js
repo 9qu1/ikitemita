@@ -1,7 +1,7 @@
 // 1〜100の窓をまとめて動かす（1枚の canvas に全部描く）
 //   窓がぽんぽん開く演出 → 一生が進む → 全部おわったら onAllEnd
-import { LifeView, drawStar, roundRect, FONT_B } from './world.js?v=1.0.1';
-import { easeOutBack } from './globe.js?v=1.0.1';
+import { LifeView, drawStar, roundRect, FONT_B } from './world.js?v=1.0.2';
+import { easeOutBack } from './globe.js?v=1.0.2';
 
 export class Runner {
   constructor(canvas, lives, opts) {

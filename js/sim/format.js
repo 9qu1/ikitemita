@@ -1,5 +1,5 @@
 // 年齢（日）を、読みやすい日本語にする
-import { M, Y } from './units.js?v=1.0.1';
+import { M, Y } from './units.js?v=1.0.2';
 
 // 一生の長さ（カードの見出し）: 「14年3か月」「5か月」「12日」「6時間」
 export function spanText(days) {
